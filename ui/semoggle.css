@@ -1,0 +1,63 @@
+* {
+    font-family:sans-serif;
+}
+
+body {
+    background-color: black;
+    color:white;
+    padding:10px;
+}
+
+fieldset.player {
+    padding:10px;
+}
+
+fieldset.player > label {
+    font-weight:bold;
+}
+
+fieldset.player:nth-child(1) > label, th.Player1, h1 > span:nth-child(1) {
+    color:red;
+}
+
+fieldset.player:nth-child(2) > label, th.Player2, h1 > span:nth-child(2) {
+    color:cyan;
+}
+
+fieldset.player:nth-child(3) > label, th.Player3, h1 > span:nth-child(3) {
+    color:yellow;
+}
+
+fieldset.player:nth-child(4) > label, th.Player4, h1 > span:nth-child(4) {
+    color:lime;
+}
+
+fieldset.player:nth-child(5) > label, th.Player5, h1 > span:nth-child(5), h2 {
+    color:magenta;
+}
+
+input {
+    font-size:large;
+}
+
+button {
+    border:4px solid red;
+    background-color:lime;
+    color:black;
+    font-size:large;
+    font-weight:bold;
+    margin:10px;
+    padding:10px;
+}
+
+th {
+    text-align:right;
+}
+
+td {
+    text-align:left;
+}
+
+table.results {
+    border: 4px solid green;
+}
