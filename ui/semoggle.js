@@ -53,7 +53,7 @@ Game.prototype = {
 
     render: function(selector) {
         const game = this
-        $("h2").text(this.target) // show the target word in the h2 at top
+        $("h2").text("The word is \"" + this.target + "\"") // show the target word in the h2 at top
         var button = document.createElement("button")
         $(button).click(function() {
             var unique_words = {}

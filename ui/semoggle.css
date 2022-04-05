@@ -9,39 +9,43 @@ body {
 }
 
 fieldset.player {
+    border-radius: 20%;
     padding:10px;
+    width:65em;
 }
 
 fieldset.player > label {
     font-weight:bold;
 }
 
-fieldset.player:nth-child(1) > label, th.Player1, h1 > span:nth-child(1) {
+fieldset.player:nth-child(1) > label, th.Player1, h1 > span:nth-child(1), fieldset.player:nth-child(1) > label > input {
     color:red;
 }
 
-fieldset.player:nth-child(2) > label, th.Player2, h1 > span:nth-child(2) {
+fieldset.player:nth-child(2) > label, th.Player2, h1 > span:nth-child(2), fieldset.player:nth-child(2) > label > input {
     color:cyan;
 }
 
-fieldset.player:nth-child(3) > label, th.Player3, h1 > span:nth-child(3) {
+fieldset.player:nth-child(3) > label, th.Player3, h1 > span:nth-child(3), fieldset.player:nth-child(3) > label > input {
     color:yellow;
 }
 
-fieldset.player:nth-child(4) > label, th.Player4, h1 > span:nth-child(4) {
+fieldset.player:nth-child(4) > label, th.Player4, h1 > span:nth-child(4), fieldset.player:nth-child(4) > label > input {
     color:lime;
 }
 
-fieldset.player:nth-child(5) > label, th.Player5, h1 > span:nth-child(5), h2 {
+fieldset.player:nth-child(5) > label, th.Player5, h1 > span:nth-child(5), fieldset.player:nth-child(5) > label > input, h2 {
     color:magenta;
 }
 
 input {
+    background:black;
     font-size:large;
 }
 
 button {
     border:4px solid red;
+    border-radius:20%;
     background-color:lime;
     color:black;
     font-size:large;
