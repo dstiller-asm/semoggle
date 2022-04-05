@@ -116,6 +116,7 @@ Game.prototype = {
         
         table = document.createElement("table")
         for (var i = 0; i < this.players.length; i++) {
+            if (scores[i] <= 0) continue
             tr = document.createElement("tr")
             th = document.createElement("th")
             $(th).text(this.players[i].name + ": ").addClass(this.players[i].name)
