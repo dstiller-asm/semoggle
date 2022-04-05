@@ -54,6 +54,10 @@ button {
     padding:10px;
 }
 
+button:hover {
+    cursor:pointer;
+}
+
 th {
     text-align:right;
 }
