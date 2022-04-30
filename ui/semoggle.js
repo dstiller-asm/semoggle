@@ -1,3 +1,15 @@
+function getURLVars() {
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf("?") + 1).split("&");
+    for(var i = 0; i < hashes.length; i++) {
+        hash = hashes[i].split("=");
+	    vars.push(hash[0]);
+	    vars[hash[0]] = hash[1];
+    }
+    return vars;
+}
+
+
 function Player(name) {
     this.name = name
     this.render("form#semoggle_input")
@@ -30,7 +42,7 @@ function Game() {
 }
 
 Game.prototype = {
-    ajaxhost: "http://127.0.0.1:5000",
+    ajaxhost: "https://semoggle.derikstiller.com/api",
 
     words: {},
 
@@ -44,6 +56,13 @@ Game.prototype = {
     },
 
     getTargetWord: function() {
+	    argv = getURLVars()
+        if ("w" in argv) {
+            this.target = argv["w"]
+	        this.render("form#semoggle_input")
+	        return
+        }
+	
         that = this
         $.ajax(this.ajaxhost + "/get_target_word").done(function(data) {
             that.target = data
@@ -106,7 +125,7 @@ Game.prototype = {
             th = document.createElement("th")
             $(th).text(word).addClass(this.players[this.words[word].player].name)
             td = document.createElement("td")
-            $(td).text(this.words[word].similarity.toFixed(2))
+            $(td).text(this.words[word].similarity.toFixed(2).toString() + "%")
             $(tr).append($(th)).append($(td))
             $(table).append($(tr))
             scores[this.words[word].player] += this.words[word].similarity
@@ -136,8 +155,20 @@ Game.prototype = {
 $(document).ready(function() {
     var p1 = new Player("Player1")
     var p2 = new Player("Player2")
-    var p3 = new Player("Player3")
-    var p4 = new Player("Player4")
-    var p5 = new Player("Player5")
-    var g = new Game(p1, p2, p3, p4, p5)
+    var g = new Game(p1, p2)
+
+    var li = document.createElement("li")
+    var a = document.createElement("a")
+        a.href = "#"
+    $(a).text("challenge").click(function() {
+        prompt("Copy this link", "https://semoggle.derikstiller.com/?w=" + g.target + "&p1=" + encodeURIComponent(g.players[0].getWords().join(" ")))
+        return false
+    })
+    $(li).append($(a))
+    $("ul").first().append($(li))
+    argv = getURLVars()
+    if ("p1" in argv) {
+        $(g.players[0].input).val(decodeURIComponent(argv["p1"]))
+        $(g.players[0].input).css("background-color", "red")
+    }
 })
